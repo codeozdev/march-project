@@ -5,8 +5,10 @@ import Link from 'next/link'
 import PostContent from './PostContent'
 import PostForm from '@/components/PostForm'
 
+const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL
+
 async function getAllPosts() {
-  const res = await fetch('http://localhost:3000/api/posts/', {
+  const res = await fetch(`${NEXT_PUBLIC_URL}/api/posts/`, {
     cache: 'no-store',
   })
   return res.json()

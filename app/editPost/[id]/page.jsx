@@ -1,7 +1,9 @@
 import EditPostForm from '@/components/EditPostForm'
 
+const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL
+
 async function getPost(id) {
-  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+  const res = await fetch(`${NEXT_PUBLIC_URL}/api/posts/${id}`, {
     cache: 'no-cache',
   })
   return res.json()
