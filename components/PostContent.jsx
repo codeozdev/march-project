@@ -46,5 +46,3 @@ export default function PostContent({ post, created, id }) {
     </>
   )
 }
-
-// MOBIL input boyutu uzat
