@@ -14,8 +14,6 @@ async function getAllPosts() {
 export default async function PostList() {
   const data = await getAllPosts()
 
-  console.log(data)
-
   return (
     <div className='flex items-center justify-center flex-col h-[calc(100vh-94px)]'>
       <Image src='/1.png' width={100} height={100} alt='logo' />
