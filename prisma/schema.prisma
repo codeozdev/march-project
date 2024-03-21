@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model PostForm {
+model Post {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   post      String
   createdAt DateTime @default(now())

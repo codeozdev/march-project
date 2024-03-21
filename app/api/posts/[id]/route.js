@@ -34,6 +34,7 @@ export async function DELETE(request, { params }) {
 
     return NextResponse.json(deletedPost, { message: 'Post Deleted' }, { status: 200 })
   } catch (error) {
+    console.error('GET Error:', error) // Loglama ekle
     return NextResponse.json({ message: 'Post Delete Error', error }, { status: 500 })
   }
 }

@@ -19,7 +19,12 @@ export async function POST(request) {
 }
 
 export async function GET() {
-  const posts = await prisma.post.findMany()
+  try {
+    const posts = await prisma.post.findMany()
 
-  return NextResponse.json(posts, { status: 200 })
+    return NextResponse.json(posts, { status: 200 })
+  } catch (error) {
+    console.error('GET Error:', error) // Loglama ekle
+    return NextResponse.json({ message: 'Get All Posts Error', error }, { status: 500 })
+  }
 }
