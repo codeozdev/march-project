@@ -9,7 +9,7 @@ const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL
 
 async function getAllPosts() {
   const res = await fetch(`${NEXT_PUBLIC_URL}/api/posts/`)
-  return await res.json()
+  return await res.text()
 }
 
 export default async function PostList() {
