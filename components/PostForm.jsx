@@ -1,43 +1,54 @@
 'use client'
 
 import { useState } from 'react'
-import { FaRegCheckCircle } from 'react-icons/fa'
-import Link from 'next/link'
-import EditPostForm from '@/components/EditPostForm'
-import RemoveBtn from '@/components/RemoveBtn'
+import { useRouter } from 'next/navigation'
+import { toast, ToastContainer } from 'react-toastify'
+import ToastifyComponent from '@/components/ToastifyComponent'
 
-export default function PostForm({ post, created }) {
-  const [posts, setPosts] = useState(post)
-  const [color, setColor] = useState(false)
+export default function PostForm({ data }) {
+  const [post, setPost] = useState('')
 
-  const handleAdd = () => {
-    setColor(!color)
-    console.log('clicked')
+  const router = useRouter()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    if (data.length >= 5) return toast.error('You can only add 5 posts') // Limit the number of posts to 5
+
+    if (!post) return toast.error('PostForm cannot be empty')
+
+    try {
+      const res = await fetch('/api/posts/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ post }),
+      })
+
+      if (res.ok) {
+        setPost('')
+        router.refresh()
+      }
+    } catch (error) {
+      console.log(error, 'EROR')
+    }
   }
-
-  const dateObject = new Date(created)
-  const hours = String(dateObject.getUTCHours()).padStart(2, '0')
-  const minutes = String(dateObject.getUTCMinutes()).padStart(2, '0')
-  const seconds = String(dateObject.getUTCSeconds()).padStart(2, '0')
 
   return (
     <div>
-      <div className='flex items-center justify-between px-1 font-comic sm:text-2xl text-white select-none'>
-        <div className='flex items-center justify-center gap-2 '>
-          <FaRegCheckCircle
-            className={`cursor-pointer mr-4 z-50 ${color ? 'text-yellow-400' : ''}`}
-            onClick={handleAdd}
-          />
-          <h1 className={`w-[300px] sm:w-[380px] ${color ? 'line-through' : ''}`}>{posts}</h1>
-        </div>
-        <div className='flex items-center gap-2'>
-          <Link href={`/editPost/${1}`}>
-            <EditPostForm />
-          </Link>
-          <RemoveBtn />
-        </div>
-      </div>
-      <div className='text-[10px] text-center bg-slate-900'>{`${hours}: ${minutes}: ${seconds}`}</div>
+      <form className='text-center font-bold font-comic my-10' onSubmit={handleSubmit}>
+        <input
+          type='text'
+          value={post}
+          onChange={(e) => setPost(e.target.value)}
+          maxLength={19}
+          className='p-2 rounded-l-2xl outline-none text-black lg:text-3xl '
+          placeholder='What do you need to do?'
+        />
+        <button className='bg-red-500 p-2 rounded-r-2xl cursor-pointer lg:text-3xl'>ADD</button>
+      </form>
+      <ToastifyComponent />
     </div>
   )
 }

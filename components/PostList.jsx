@@ -2,12 +2,12 @@ import RemoveBtn from '@/components/RemoveBtn'
 import Image from 'next/image'
 import EditPostForm from './EditPostForm'
 import Link from 'next/link'
-import PostForm from './PostForm'
-import PostAdd from '@/components/PostAdd'
+import PostContent from './PostContent'
+import PostForm from '@/components/PostForm'
 
 async function getAllPosts() {
   const res = await fetch('http://localhost:3000/api/posts/', {
-    cache: 'no-cache',
+    cache: 'no-store',
   })
   return res.json()
 }
@@ -18,17 +18,15 @@ export default async function PostList() {
   return (
     <div className='flex items-center justify-center flex-col h-[calc(100vh-94px)]'>
       <Image src='/1.png' width={100} height={100} alt='logo' />
-      <PostAdd />
+      <PostForm data={data} />
       {/* POSTS */}
       <div className='mt-10 flex gap-5 flex-col lg:w-1/2 lg:mx-auto w-full'>
         {data.map((post) => (
-          <div className='bg-slate-800 lg:rounded-lg' key={post.id}>
-            <PostForm post={post.post} created={post.createdAt} />
+          <div className='last:bg-red-400 bg-slate-800 lg:rounded-t-lg' key={post.id}>
+            <PostContent post={post.post} created={post.createdAt} id={post.id} />
           </div>
         ))}
       </div>
     </div>
   )
 }
-
-//first:bg-slate-800 last:bg-yellow-500
