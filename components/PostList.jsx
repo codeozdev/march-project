@@ -8,7 +8,11 @@ async function getAllPosts() {
   const res = await fetch(`${NEXT_PUBLIC_URL}/api/posts/`, {
     cache: 'no-cache',
   })
-  return await res.json()
+  try {
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export default async function PostList() {
