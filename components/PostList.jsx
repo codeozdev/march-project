@@ -26,6 +26,7 @@ export default async function PostList() {
       <Image src='/1.png' width={100} height={100} alt='logo' />
       <h1 className='bg-red-400'>1</h1>
       <h1>{data[0].post}</h1>
+      <p>Deneme</p>
 
       {/*<_PostForm data={data} />*/}
       {/*/!* POSTS *!/*/}
