@@ -2,7 +2,7 @@ import Image from 'next/image'
 import _PostContent from './_PostContent'
 import _PostForm from '@/components/_PostForm'
 
-const URL = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
+const URL = process.env.NEXT_PUBLIC_URL || 'https://march-project-nucodeoz.vercel.app/'
 
 // async function getAllTopics() {
 //   try {
