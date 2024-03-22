@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { toast, ToastContainer } from 'react-toastify'
 import ToastifyComponent from '@/components/ToastifyComponent'
 
-export default function PostForm({ data }) {
+export default function _PostForm({ data }) {
   const [post, setPost] = useState('')
 
   const router = useRouter()
@@ -15,7 +15,7 @@ export default function PostForm({ data }) {
 
     if (data.length >= 5) return toast.error('You can only add 5 posts') // Limit the number of posts to 5
 
-    if (!post) return toast.error('PostForm cannot be empty')
+    if (!post) return toast.error('_PostForm cannot be empty')
 
     try {
       const res = await fetch('/api/posts/', {

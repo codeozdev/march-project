@@ -12,9 +12,9 @@ export async function POST(request) {
       },
     })
 
-    return NextResponse.json(new_post, { message: 'New PostForm Created' }, { status: 201 })
+    return NextResponse.json(new_post, { message: 'New _PostForm Created' }, { status: 201 })
   } catch (error) {
-    return NextResponse.json({ message: 'New PostForm Error', error }, { status: 500 })
+    return NextResponse.json({ message: 'New _PostForm Error', error }, { status: 500 })
   }
 }
 

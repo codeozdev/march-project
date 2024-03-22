@@ -15,7 +15,7 @@ export default function _EditPostForm({ post, updatedAt, id }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!post) return toast.error('PostForm cannot be empty')
+    if (!post) return toast.error('_PostForm cannot be empty')
 
     try {
       const res = await fetch(`/api/posts/${id}`, {
