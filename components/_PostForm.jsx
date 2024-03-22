@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { toast, ToastContainer } from 'react-toastify'
-import ToastifyComponent from '@/components/ToastifyComponent'
+import _ToastifyComponent from '@/components/_ToastifyComponent'
 
 export default function _PostForm({ data }) {
   const [post, setPost] = useState('')
@@ -48,7 +48,7 @@ export default function _PostForm({ data }) {
         />
         <button className='bg-red-500 p-2 rounded-r-2xl cursor-pointer lg:text-3xl'>ADD</button>
       </form>
-      <ToastifyComponent />
+      <_ToastifyComponent />
     </div>
   )
 }

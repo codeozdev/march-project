@@ -38,21 +38,21 @@ export async function DELETE(request, { params }) {
     return NextResponse.json({ message: 'Post Delete Error', error }, { status: 500 })
   }
 }
-export async function GET(request, { params }) {
-  try {
-    const { id } = params
-    const posts = await prisma.post.findUnique({
-      where: {
-        id,
-      },
-    })
-
-    if (!posts) {
-      return NextResponse.json({ message: 'Post not found' }, { status: 404 })
-    }
-
-    return NextResponse.json(posts, { status: 200 })
-  } catch (e) {
-    return NextResponse.json({ message: 'One Get Post Error', e }, { status: 500 })
-  }
-}
+// export async function GET(request, { params }) {
+//   try {
+//     const { id } = params
+//     const posts = await prisma.post.findUnique({
+//       where: {
+//         id,
+//       },
+//     })
+//
+//     if (!posts) {
+//       return NextResponse.json({ message: 'Post not found' }, { status: 404 })
+//     }
+//
+//     return NextResponse.json(posts, { status: 200 })
+//   } catch (e) {
+//     return NextResponse.json({ message: 'One Get Post Error', e }, { status: 500 })
+//   }
+// }

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import PostContent from './PostContent'
+import _PostContent from './_PostContent'
 import _PostForm from '@/components/_PostForm'
 
 const URL = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
@@ -23,7 +23,7 @@ const URL = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
 async function getPosts() {
   const res = await fetch(`${URL}/api/posts`, { cache: 'no-store' })
 
-  if (!res.ok) throw new Error('Failed to fetch data')
+  if (!res.ok) throw new Error('Veri alınamadı')
 
   return await res.json()
 }
@@ -46,7 +46,7 @@ export default async function PostList() {
       {/*<div className='mt-10 flex gap-5 flex-col lg:w-1/3 lg:mx-auto w-full'>*/}
       {/*  {data.map((post) => (*/}
       {/*    <div className='bg-slate-800 lg:rounded-t-lg' key={post.id}>*/}
-      {/*      <PostContent post={post.post} created={post.createdAt} id={post.id} />*/}
+      {/*      <_PostContent post={post.post} created={post.createdAt} id={post.id} />*/}
       {/*    </div>*/}
       {/*  ))}*/}
       {/*</div>*/}

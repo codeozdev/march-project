@@ -6,7 +6,7 @@ import Link from 'next/link'
 import _RemoveBtn from '@/components/_RemoveBtn'
 import { FaEdit } from 'react-icons/fa'
 
-export default function PostContent({ post, created, id }) {
+export default function _PostContent({ post, created, id }) {
   const [posts, setPosts] = useState(post)
   const [color, setColor] = useState(false)
 
