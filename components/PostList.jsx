@@ -1,29 +1,34 @@
-'use server'
-
 import Image from 'next/image'
 import _PostContent from './_PostContent'
 import _PostForm from '@/components/_PostForm'
 
 const URL = process.env.NEXTAUTH_URL
 
-async function getAllTopics() {
+async function getPosts() {
   try {
-    const res = await fetch(`${URL}/api/posts/`, {
-      cache: 'no-store',
-    })
+    const res = await fetch(`${URL}/api/posts`, { cache: 'no-store' })
 
     if (!res.ok) {
-      throw new Error('Frontend Error: Fetching Topics')
+      throw new Error('Frontend Error: Fetching')
     }
 
-    return res.json()
+    const data = await res.json()
+
+    if (!data || data.length === 0) {
+      throw new Error('Frontend Error: Data is empty')
+    }
+
+    return data
   } catch (error) {
     console.log('Error loading topics', error)
+    throw error
   }
 }
 
 export default async function PostList() {
-  const data = await getAllTopics()
+  const data = await getPosts()
+
+  console.log(data)
 
   return (
     <div className='flex items-center justify-center flex-col h-[calc(100vh-94px)]'>
