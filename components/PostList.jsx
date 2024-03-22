@@ -2,7 +2,7 @@ import Image from 'next/image'
 import PostContent from './PostContent'
 import _PostForm from '@/components/_PostForm'
 
-const URL = process.env.NEXT_URL || 'http://localhost:3000'
+const URL = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
 
 // async function getAllTopics() {
 //   try {
@@ -20,15 +20,26 @@ const URL = process.env.NEXT_URL || 'http://localhost:3000'
 //   }
 // }
 
-export default async function PostList() {
-  // const data = await getAllTopics()
+async function getPosts() {
+  const res = await fetch('http://localhost:3000/api/posts', { cache: 'no-store' })
 
-  // console.log(data)
+  if (!res.ok) throw new Error('Failed to fetch data')
+
+  return await res.json()
+}
+
+export default async function PostList() {
+  const data = await getPosts()
+
+  console.log(data)
 
   return (
     <div className='flex items-center justify-center flex-col h-[calc(100vh-94px)]'>
       <Image src='/1.png' width={100} height={100} alt='logo' />
       <h1 className='bg-red-400'>1</h1>
+      <h1>{data[0].post}</h1>
+
+      <p>{URL}</p>
 
       {/*<_PostForm data={data} />*/}
       {/*/!* POSTS *!/*/}
