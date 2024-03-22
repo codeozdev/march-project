@@ -39,7 +39,6 @@ export default function PostContent({ post, created, id }) {
             <FaEdit />
           </Link>
           <RemoveBtn id={id} />
-          <h1>{id}</h1>
         </div>
       </div>
       <div className='text-[10px] text-center bg-slate-900 '>{`${hours}: ${minutes}: ${seconds}`}</div>
