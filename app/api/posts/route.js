@@ -24,7 +24,7 @@ export async function GET() {
 
     return NextResponse.json(posts, { status: 200 })
   } catch (error) {
-    console.error('GET Error:', error) // Loglama ekle
+    console.error('GET Error:', error)
     return NextResponse.json({ message: 'Get All Posts Error', error }, { status: 500 })
   }
 }

@@ -1,8 +1,10 @@
+'use server'
+
 import Image from 'next/image'
 import _PostContent from './_PostContent'
 import _PostForm from '@/components/_PostForm'
 
-const URL = process.env.NEXT_PUBLIC_URL || 'https://march-project-nucodeoz.vercel.app/'
+// const URL = process.env.NEXT_PUBLIC_URL
 
 // async function getAllTopics() {
 //   try {
@@ -21,9 +23,7 @@ const URL = process.env.NEXT_PUBLIC_URL || 'https://march-project-nucodeoz.verce
 // }
 
 async function getPosts() {
-  const res = await fetch(`${URL}/api/posts`, { cache: 'no-store' })
-
-  if (!res.ok) throw new Error('Veri alınamadı')
+  const res = await fetch(process.env.URL + '/api/posts', { cache: 'no-store' })
 
   return await res.json()
 }
@@ -31,15 +31,11 @@ async function getPosts() {
 export default async function PostList() {
   const data = await getPosts()
 
-  console.log(data)
-
   return (
     <div className='flex items-center justify-center flex-col h-[calc(100vh-94px)]'>
       <Image src='/1.png' width={100} height={100} alt='logo' />
       <h1 className='bg-red-400'>1</h1>
       <h1>{data[0].post}</h1>
-
-      <p>{URL}</p>
 
       {/*<_PostForm data={data} />*/}
       {/*/!* POSTS *!/*/}
