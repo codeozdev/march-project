@@ -8,17 +8,7 @@ async function getPosts() {
   try {
     const res = await fetch(`${URL}/api/posts`, { cache: 'no-store' })
 
-    if (!res.ok) {
-      throw new Error('Frontend Error: Fetching')
-    }
-
-    const data = await res.json()
-
-    if (!data || data.length === 0) {
-      throw new Error('Frontend Error: Data is empty')
-    }
-
-    return data
+    return res.json()
   } catch (error) {
     console.log('Error loading topics', error)
     throw error
@@ -29,6 +19,7 @@ export default async function PostList() {
   const data = await getPosts()
 
   console.log(data)
+  console.log(typeof data)
 
   return (
     <div className='flex items-center justify-center flex-col h-[calc(100vh-94px)]'>
