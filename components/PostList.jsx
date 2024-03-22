@@ -4,31 +4,31 @@ import _PostForm from '@/components/_PostForm'
 
 const URL = process.env.NEXT_URL || 'http://localhost:3000'
 
-async function getAllTopics() {
-  try {
-    const res = await fetch(`${URL}/api/posts/`, {
-      cache: 'no-store',
-    })
-
-    if (!res.ok) {
-      throw new Error('Frontend Error: Fetching Topics')
-    }
-
-    return res.json()
-  } catch (error) {
-    console.log('Error loading topics', error)
-  }
-}
+// async function getAllTopics() {
+//   try {
+//     const res = await fetch(`${URL}/api/posts/`, {
+//       cache: 'no-store',
+//     })
+//
+//     if (!res.ok) {
+//       throw new Error('Frontend Error: Fetching Topics')
+//     }
+//
+//     return res.json()
+//   } catch (error) {
+//     console.log('Error loading topics', error)
+//   }
+// }
 
 export default async function PostList() {
-  const data = await getAllTopics()
+  // const data = await getAllTopics()
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <div className='flex items-center justify-center flex-col h-[calc(100vh-94px)]'>
       <Image src='/1.png' width={100} height={100} alt='logo' />
-      <h1 className='bg-red-400'>{data[0].post}</h1>
+      <h1 className='bg-red-400'>1</h1>
 
       {/*<_PostForm data={data} />*/}
       {/*/!* POSTS *!/*/}
