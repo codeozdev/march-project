@@ -4,19 +4,24 @@ import PostForm from '@/components/PostForm'
 
 const URL = process.env.NEXT_PUBLIC_URL
 
-async function getAllPosts() {
-  const res = await fetch(`${URL}/api/posts/`, {
-    cache: 'no-cache',
-  })
+async function getAllTopics() {
   try {
-    return await res.json()
+    const res = await fetch(`${URL}/api/posts/`, {
+      cache: 'no-store',
+    })
+
+    if (!res.ok) {
+      throw new Error('Frontend Error: Fetching Topics')
+    }
+
+    return res.json()
   } catch (error) {
-    console.log(error)
+    console.log('Error loading topics', error)
   }
 }
 
 export default async function PostList() {
-  const data = await getAllPosts()
+  const data = await getAllTopics()
 
   console.log(data)
 
