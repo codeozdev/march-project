@@ -2,10 +2,10 @@ import Image from 'next/image'
 import PostContent from './PostContent'
 import PostForm from '@/components/PostForm'
 
-const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL
+const NEXTAUTH_URL = process.env.NEXTAUTH_URL
 
 async function getAllPosts() {
-  const res = await fetch(`${NEXT_PUBLIC_URL}/api/posts/`, {
+  const res = await fetch(`${NEXTAUTH_URL}/api/posts/`, {
     cache: 'no-cache',
   })
   try {

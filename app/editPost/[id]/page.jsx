@@ -1,9 +1,9 @@
 import EditPostForm from '@/components/EditPostForm'
 
-const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL
+const NEXTAUTH_URL = process.env.NEXTAUTH_URL
 
 async function getPost(id) {
-  const res = await fetch(`${NEXT_PUBLIC_URL}/api/posts/${id}`, {
+  const res = await fetch(`${NEXTAUTH_URL}/api/posts/${id}`, {
     cache: 'no-cache',
   })
   return res.json()

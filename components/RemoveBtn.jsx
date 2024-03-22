@@ -3,7 +3,7 @@
 import { HiOutlineTrash } from 'react-icons/hi'
 import { useRouter } from 'next/navigation'
 
-const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL
+const NEXTAUTH_URL = process.env.NEXTAUTH_URL
 
 export default function RemoveBtn({ id }) {
   const router = useRouter()
@@ -12,7 +12,7 @@ export default function RemoveBtn({ id }) {
     try {
       const confirmed = confirm('Are you sure you want to delete this topic?')
       if (confirmed) {
-        const res = await fetch(`${NEXT_PUBLIC_URL}/api/posts/${id}`, {
+        const res = await fetch(`${NEXTAUTH_URL}/api/posts/${id}`, {
           method: 'DELETE',
         })
         if (res.ok) {
