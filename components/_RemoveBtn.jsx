@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 
 const NEXTAUTH_URL = process.env.NEXTAUTH_URL
 
-export default function RemoveBtn({ id }) {
+export default function _RemoveBtn({ id }) {
   const router = useRouter()
 
   const handleRemove = async () => {
@@ -21,7 +21,7 @@ export default function RemoveBtn({ id }) {
         }
       }
     } catch (e) {
-      console.log('RemoveBtn Error', e)
+      console.log('_RemoveBtn Error', e)
     }
   }
 

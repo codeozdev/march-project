@@ -1,9 +1,9 @@
-import EditPostForm from '@/components/EditPostForm'
+import _EditPostForm from '@/components/_EditPostForm'
 
-const NEXTAUTH_URL = process.env.NEXTAUTH_URL
+const URL = process.env.NEXT_PUBLIC_URL
 
 async function getPost(id) {
-  const res = await fetch(`${NEXTAUTH_URL}/api/posts/${id}`, {
+  const res = await fetch(`${URL}/api/posts/${id}`, {
     cache: 'no-cache',
   })
   return res.json()
@@ -20,7 +20,7 @@ export default async function EditPage({ params }) {
 
   return (
     <div>
-      <EditPostForm post={post} updatedAt={updatedAt} id={id} />
+      <_EditPostForm post={post} updatedAt={updatedAt} id={id} />
     </div>
   )
 }

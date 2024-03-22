@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { FaEdit, FaRegCheckCircle } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
-export default function EditPostForm({ post, updatedAt, id }) {
+export default function _EditPostForm({ post, updatedAt, id }) {
   const [newPost, setNewPost] = useState(post)
 
   const router = useRouter()
@@ -63,6 +63,3 @@ export default function EditPostForm({ post, updatedAt, id }) {
     </div>
   )
 }
-
-// <div className='bg-slate-800 lg:rounded-t-lg'
-//  <div className='mt-10 flex gap-5 flex-col lg:w-1/2 lg:mx-auto w-full'>
