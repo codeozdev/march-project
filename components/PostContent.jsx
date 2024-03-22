@@ -3,10 +3,10 @@
 import { useState } from 'react'
 import { FaRegCheckCircle } from 'react-icons/fa'
 import Link from 'next/link'
-import _RemoveBtn from '@/components/_RemoveBtn'
+import RemoveBtn from '@/components/RemoveBtn'
 import { FaEdit } from 'react-icons/fa'
 
-export default function _PostContent({ post, created, id }) {
+export default function PostContent({ post, created, id }) {
   const [posts, setPosts] = useState(post)
   const [color, setColor] = useState(false)
 
@@ -35,10 +35,11 @@ export default function _PostContent({ post, created, id }) {
           <h1 className={`w-[300px] sm:w-[380px] ${color ? 'line-through' : ''}`}>{posts}</h1>
         </div>
         <div className='flex items-center gap-2'>
-          {/*<Link href={`/editPost/${id}`}>*/}
-          {/*  <FaEdit />*/}
-          {/*</Link>*/}
-          {/*<_RemoveBtn id={id} />*/}
+          <Link href={`/editPost/${id}`}>
+            <FaEdit />
+          </Link>
+          <RemoveBtn id={id} />
+          <h1>{id}</h1>
         </div>
       </div>
       <div className='text-[10px] text-center bg-slate-900 '>{`${hours}: ${minutes}: ${seconds}`}</div>

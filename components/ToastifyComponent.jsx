@@ -2,7 +2,7 @@
 
 import { ToastContainer } from 'react-toastify'
 
-export default function _ToastifyComponent() {
+export default function ToastifyComponent() {
   return (
     <ToastContainer
       position='bottom-center'

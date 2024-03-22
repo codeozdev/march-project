@@ -1,13 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { FaEdit, FaRegCheckCircle } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
-export default function _EditPostForm({ post, updatedAt, id }) {
+const URL = process.env.NEXTAUTH_URL
+
+export default function EditPostForm({ post, updatedAt, id }) {
   const [newPost, setNewPost] = useState(post)
 
   const router = useRouter()
@@ -15,7 +15,7 @@ export default function _EditPostForm({ post, updatedAt, id }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!post) return toast.error('_PostForm cannot be empty')
+    if (!post) return toast.error('postForm cannot be empty')
 
     try {
       const res = await fetch(`/api/posts/${id}`, {
