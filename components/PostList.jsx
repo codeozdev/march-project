@@ -20,13 +20,13 @@ export default async function PostList() {
       <Image src='/1.png' width={100} height={100} alt='logo' />
       <PostForm data={posts} />
       {/*POSTS*/}
-      <div className='mt-10 flex gap-5 flex-col lg:w-1/3 lg:mx-auto w-full'>
-        {posts.map((post) => (
-          <div className='bg-slate-800 lg:rounded-t-lg' key={post.id}>
-            <PostContent post={post.post} created={post.createdAt} id={post.id} />
-          </div>
-        ))}
-      </div>
+      {/*<div className='mt-10 flex gap-5 flex-col lg:w-1/3 lg:mx-auto w-full'>*/}
+      {/*  {posts.map((post) => (*/}
+      {/*    <div className='bg-slate-800 lg:rounded-t-lg' key={post.id}>*/}
+      {/*      <PostContent post={post.post} created={post.createdAt} id={post.id} />*/}
+      {/*    </div>*/}
+      {/*  ))}*/}
+      {/*</div>*/}
     </div>
   )
 }
