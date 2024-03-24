@@ -7,18 +7,16 @@ const URL = process.env.NEXTAUTH_URL
 async function getPosts() {
   try {
     const res = await fetch(`${URL}/api/posts`, { cache: 'no-store' })
-    // console.log(res)
-    const data = await res.json()
-    console.log(data.message || data.error)
-    return data.posts
+    return res.json()
   } catch (error) {
     console.log('Error loading topics', error)
-    throw error
   }
 }
 
 export default async function PostList() {
-  const data = await getPosts()
+  const { posts, message, error } = await getPosts()
+  const data = posts
+  console.log(message || error)
 
   return (
     <div className='flex items-center justify-center flex-col h-[calc(100vh-94px)]'>
