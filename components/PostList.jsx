@@ -11,6 +11,7 @@ async function getPosts() {
     return await res.json()
   } catch (error) {
     console.log('Error loading topics', error)
+    throw error
   }
 }
 
