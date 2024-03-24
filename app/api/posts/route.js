@@ -12,9 +12,9 @@ export async function POST(request) {
       },
     })
 
-    return NextResponse.json(new_post, { message: 'New postForm Created' }, { status: 201 })
+    return NextResponse.json(new_post, { status: 201 })
   } catch (error) {
-    return NextResponse.json({ message: 'New postForm Error', error }, { status: 500 })
+    return NextResponse.json({ message: 'New PostForm Error', error }, { status: 500 })
   }
 }
 
@@ -22,9 +22,11 @@ export async function GET() {
   try {
     const posts = await prisma.post.findMany()
 
-    return NextResponse.json(posts, { status: 200 })
+    return NextResponse.json(
+      { message: 'STATIC GET FUNCTION WORKED SUCCESSFULLY', posts },
+      { status: 200 },
+    )
   } catch (error) {
-    console.error('GET Error:', error)
-    return NextResponse.json({ message: 'Get All Posts Error', error }, { status: 500 })
+    return NextResponse.json({ error: 'STATIC GET FUNCTION ERROR' }, { status: 500 })
   }
 }

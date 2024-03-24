@@ -3,8 +3,6 @@
 import { HiOutlineTrash } from 'react-icons/hi'
 import { useRouter } from 'next/navigation'
 
-const URL = process.env.NEXTAUTH_URL
-
 export default function RemoveBtn({ id }) {
   const router = useRouter()
 
