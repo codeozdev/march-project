@@ -7,9 +7,9 @@ const URL = process.env.NEXTAUTH_URL
 async function getPosts() {
   try {
     const res = await fetch(`${URL}/api/posts`, { cache: 'no-store' })
-    return res.json()
+    return await res.json()
   } catch (error) {
-    console.log('Error loading topics', error)
+    console.log('Error loading topics')
   }
 }
 
