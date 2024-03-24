@@ -5,12 +5,8 @@ import PostContent from '@/components/PostContent'
 const URL = process.env.NEXTAUTH_URL
 
 async function getPosts() {
-  try {
-    const res = await fetch(`${URL}/api/posts`, { cache: 'no-store' })
-    return await res.json()
-  } catch (error) {
-    console.log('Error loading topics')
-  }
+  const res = await fetch(`${URL}/api/posts`, { cache: 'no-store' })
+  return await res.json()
 }
 
 export default async function PostList() {
